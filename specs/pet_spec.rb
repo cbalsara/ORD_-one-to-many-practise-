@@ -25,10 +25,4 @@ class TestPet < MiniTest::Test
     assert_equal("Tiger", @pet1.type)
    end 
 
-
-
-
-
-
-
 end 
