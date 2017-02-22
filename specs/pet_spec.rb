@@ -8,7 +8,8 @@ class TestPet < MiniTest::Test
     options = {
       'id' => 1,
       'name' => 'Tony',
-      'type' => 'Tiger'
+      'type' => 'Tiger',
+      'store_id' => 10
     }
     @pet1 = Pet.new(options)
   end 
@@ -23,6 +24,10 @@ class TestPet < MiniTest::Test
 
    def test_pet_has_type
     assert_equal("Tiger", @pet1.type)
+   end 
+
+   def test_pet_has_reference_to_store
+    assert_equal(10, @pet1.store_id)
    end 
 
 end 
