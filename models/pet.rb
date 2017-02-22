@@ -5,7 +5,7 @@ class Pet
 def initialize(options) 
   @id = options['id'].to_i
   @name = options['name']
-  @type = options['type'].to_i
+  @type = options['type']
 end 
 
 
