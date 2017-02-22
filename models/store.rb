@@ -14,7 +14,7 @@ end
 def save()
   sql = "INSERT INTO stores(name, address, store_type) VALUES ('#{@name}', '#{@address}', '#{@store_type}') RETURNING *"
   stores = SqlRunner.run(sql).first
-  @id = stores['id']
+  @id = stores['id'].to_i
 end 
 
 
