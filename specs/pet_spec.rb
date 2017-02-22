@@ -17,6 +17,10 @@ class TestPet < MiniTest::Test
     assert_equal(1, @pet1.id)
    end 
 
+   def test_pet_has_name
+    assert_equal("Tony", @pet1.name)
+   end
+
 
 
 
