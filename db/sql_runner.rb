@@ -7,7 +7,7 @@ class SqlRunner
       db = PG.connect( {dbname: 'pet_store', host: 'localhost'} )
       result = db.exec( sql )
     ensure
-      db.close
+      db.close()
     end  
       return result
   end 
