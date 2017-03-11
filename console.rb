@@ -18,5 +18,6 @@ pet2.save()
 pet3 = Pet.new( {'name' => "Eddy", 'type' => "Eagle", 'store_id' => store2.id} )
 pet3.save()
 
+
 binding.pry
 nil 
