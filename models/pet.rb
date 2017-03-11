@@ -16,6 +16,13 @@ def save
   pets = SqlRunner.run(sql).first
   @id = pets['id'].to_i
 end 
+# Show the store a pet belongs 
+def belongsTo
+  sql = "SELECT * FROM stores WHERE id = #{@store_id}"
+  chosenStore = SqlRunner.run(sql)
+  result = chosenStore.map { |store|Store.new(store)  }
+  return result
+end 
 
 
 end 
