@@ -16,13 +16,27 @@ def save
   pets = SqlRunner.run(sql).first
   @id = pets['id'].to_i
 end 
-# Show the store a pet belongs 
+
+def editPet
+  sql = "UPDATE pets SET name = '#{@name}', type = '#{@type}', store_id = '#{@store_id}' WHERE id = #{@id}"
+  SqlRunner.run(sql)
+  return 'pet edited'
+end 
+
+def deletePet
+end 
+
 def belongsTo
   sql = "SELECT * FROM stores WHERE id = #{@store_id}"
   chosenStore = SqlRunner.run(sql)
   result = chosenStore.map { |store|Store.new(store)  }
   return result
 end 
+
+# Find pet by its id
+# edit a pets information  
+# list all pets
+# delete a pet 
 
 
 end 
