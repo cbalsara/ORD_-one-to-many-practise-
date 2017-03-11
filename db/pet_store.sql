@@ -9,7 +9,7 @@ CREATE TABLE stores(
 );
 
 CREATE TABLE pets(
-id SERIAL4 PRIMARY KEY,
+id SERIAL4,
 name VARCHAR(255),
 type VARCHAR(255),
 store_id SERIAL4 REFERENCES stores(id)

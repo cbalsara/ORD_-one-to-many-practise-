@@ -15,6 +15,13 @@ def save()
   sql = "INSERT INTO stores(name, address, store_type) VALUES ('#{@name}', '#{@address}', '#{@store_type}') RETURNING *"
   stores = SqlRunner.run(sql).first
   @id = stores['id'].to_i
+end
+
+def allPets
+  sql = "SELECT * FROM pets WHERE store_id = #{@id}"
+  pets = SqlRunner.run(sql)
+  result = pets.map { |pet| Pet.new(pet)  }
+  return result
 end 
 
 
