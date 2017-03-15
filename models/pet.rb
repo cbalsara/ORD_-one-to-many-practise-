@@ -21,7 +21,7 @@ def edit_pet(new_name)
   @name = new_name
   sql = "UPDATE pets SET name = '#{@name}', type = '#{type}', store_id = '#{store_id}' WHERE id = #{@id}"
   SqlRunner.run(sql)
-  return 'pet edited'
+  return 'pet name successfuly edited'
 end 
 
 def self.delete_pet(id)
@@ -49,10 +49,6 @@ def self.find_all_pets
   result = all_pets.map { |pet|Pet.new(pet)  }
   return result
 end 
-
-# list all pets
-
-
 
 end 
 
