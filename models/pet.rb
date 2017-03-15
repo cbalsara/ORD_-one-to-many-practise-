@@ -11,14 +11,15 @@ def initialize(options)
   @store_id = options['store_id'].to_i
 end 
 
-def save
+def save()
   sql = "INSERT INTO pets(name, type, store_id) VALUES ('#{@name}', '#{@type}', '#{@store_id}') RETURNING *"
   pets = SqlRunner.run(sql).first
   @id = pets['id'].to_i
 end 
 
-def edit_pet()
-  sql = "UPDATE pets SET name = '#{@name}', type = '#{@type}', store_id = '#{@store_id}' WHERE id = #{@id}"
+def edit_pet(new_name)
+  @name = new_name
+  sql = "UPDATE pets SET name = '#{@name}', type = '#{type}', store_id = '#{store_id}' WHERE id = #{@id}"
   SqlRunner.run(sql)
   return 'pet edited'
 end 
@@ -29,16 +30,28 @@ def self.delete_pet(id)
   return result
 end 
 
-def belongs_to
+def belongs_to()
   sql = "SELECT * FROM stores WHERE id = #{@store_id}"
   chosenStore = SqlRunner.run(sql)
   result = chosenStore.map { |store|Store.new(store)  }
   return result
 end 
 
-# Find pet by its id  
+def self.find_pet(id)
+  sql = "SELECT * FROM pets WHERE id = #{id}"
+  chosenPet = SqlRunner.run(sql)
+  return chosenPet.first
+end 
+
+def self.find_all_pets
+  sql = "SELECT * FROM pets"
+  all_pets = SqlRunner.run(sql)
+  result = all_pets.map { |pet|Pet.new(pet)  }
+  return result
+end 
+
 # list all pets
-# delete a pet 
+
 
 
 end 

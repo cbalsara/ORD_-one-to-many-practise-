@@ -17,12 +17,16 @@ def save()
   @id = stores['id'].to_i
 end
 
-def all_pets
+def all_pets()
   sql = "SELECT * FROM pets WHERE store_id = #{@id}"
   pets = SqlRunner.run(sql)
   result = pets.map { |pet| Pet.new(pet)  }
   return result
 end 
+# find certain stroes by their id 
+# edit pet stores
+# delete pet stores 
+# list all pet stores 
 
 
 
